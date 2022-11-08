@@ -7,6 +7,24 @@ let ehName = __ENV.EVENTHUB_NAME;
 
 console.log(ehName);
 
+let inputStages = JSON.parse('[{"target":10,"duration":"5m"}]')
+
+export let options = {
+    discardResponseBodies: true,
+    scenarios: {
+        contacts: {
+        executor: 'ramping-arrival-rate',
+        startRate: 1,
+        timeUnit: '1s',
+        preAllocatedVUs: 1000,
+        maxVUs: 10000,
+        stages: inputStages
+        }
+    }
+}
+
+console.log(options)
+
 export default function () {
     const body = {
         key: "randomKey1",
@@ -24,11 +42,13 @@ export default function () {
     var url = `${uri}?api-version=2014-01`
     let res = http.post(url, JSON.stringify(body), params);
 
-    console.log(res);
+    //console.log(res);
 
     check(res, {
         "is status 200": r => r.status >= 200 && r.status <= 300
     });
 
 };
+
+
 
