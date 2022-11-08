@@ -5,6 +5,8 @@ let ehSasToken = __ENV.EVENTHUB_ACCESS_TOKEN;
 let ehNamespace = __ENV.EVENTHUB_NAMESPACE;
 let ehName = __ENV.EVENTHUB_NAME;
 
+console.log(ehName);
+
 export default function () {
     const body = {
         key: "randomKey1",
@@ -21,6 +23,8 @@ export default function () {
     var uri = `https://${ehNamespace}.servicebus.windows.net/${ehName}/messages`
     var url = `${uri}?api-version=2014-01`
     let res = http.post(url, JSON.stringify(body), params);
+
+    console.log(res);
 
     check(res, {
         "is status 200": r => r.status >= 200 && r.status <= 300
