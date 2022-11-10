@@ -25,6 +25,15 @@ export let options = {
 
 console.log(options)
 
+export function handleSummary(data) {
+    const med_latency = data.metrics.iterations;
+    const latency_message = `The median latency was ${med_latency}\n`;
+  
+    return {
+      stdout: latency_message,
+    };
+}
+
 export default function () {
     const body = {
         key: "randomKey1",
