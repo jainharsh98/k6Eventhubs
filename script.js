@@ -26,14 +26,14 @@ export let options = {
 
 console.log(options)
 
-/*export function handleSummary(data) {
-    const med_latency = data.metrics.iterations.value;
+export function handleSummary(data) {
+    const med_latency = data.metrics.myCounter;
     const latency_message = `The median latency was ${med_latency}\n`;
   
     return {
       stdout: latency_message,
     };
-}*/
+}
 
 const myCounter = new Counter('my_counter');
 
