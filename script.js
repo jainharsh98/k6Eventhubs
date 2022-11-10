@@ -1,5 +1,6 @@
 import http from 'k6/http';
 import { check } from 'k6';
+import { Counter } from 'k6/metrics';
 
 let ehSasToken = __ENV.EVENTHUB_ACCESS_TOKEN;
 let ehNamespace = __ENV.EVENTHUB_NAMESPACE;
@@ -58,7 +59,7 @@ export default function () {
     check(res, {
         "is status 200": r => r.status >= 200 && r.status <= 300
     });
-    
+
     myCounter.add(1);
 };
 
