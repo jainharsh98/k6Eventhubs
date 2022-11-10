@@ -25,14 +25,16 @@ export let options = {
 
 console.log(options)
 
-export function handleSummary(data) {
+/*export function handleSummary(data) {
     const med_latency = data.metrics.iterations.value;
     const latency_message = `The median latency was ${med_latency}\n`;
   
     return {
       stdout: latency_message,
     };
-}
+}*/
+
+const myCounter = new Counter('my_counter');
 
 export default function () {
     const body = {
@@ -56,7 +58,8 @@ export default function () {
     check(res, {
         "is status 200": r => r.status >= 200 && r.status <= 300
     });
-
+    
+    myCounter.add(1);
 };
 
 
