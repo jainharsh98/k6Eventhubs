@@ -8,7 +8,7 @@ let ehName = __ENV.EVENTHUB_NAME;
 
 console.log(ehName);
 
-let inputStages = JSON.parse('[{"target":10,"duration":"5m"}]')
+let inputStages = JSON.parse('[{"target":10,"duration":"1m"}]')
 
 export let options = {
     discardResponseBodies: true,
